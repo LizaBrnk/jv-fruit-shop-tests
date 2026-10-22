@@ -2,10 +2,22 @@ package core.basesyntax;
 
 import core.basesyntax.db.Storage;
 import core.basesyntax.model.FruitTransaction;
-import core.basesyntax.service.impl.*;
+import core.basesyntax.service.impl.BalanceOperation;
+import core.basesyntax.service.impl.OperationHandler;
+import core.basesyntax.service.impl.ParserService;
+import core.basesyntax.service.impl.ParserServiceImpl;
+import core.basesyntax.service.impl.PurchaseOperation;
+import core.basesyntax.service.impl.ReaderServiceImpl;
+import core.basesyntax.service.impl.ReportGenerator;
+import core.basesyntax.service.impl.ReportGeneratorImpl;
+import core.basesyntax.service.impl.ReturnOperation;
+import core.basesyntax.service.impl.ShopService;
+import core.basesyntax.service.impl.ShopServiceImpl;
+import core.basesyntax.service.impl.SupplyOperation;
+import core.basesyntax.service.impl.WriterForFile;
+import core.basesyntax.service.impl.WriterForFileImpl;
 import core.basesyntax.strategy.OperationStrategy;
 import core.basesyntax.strategy.OperationStrategyImpl;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
