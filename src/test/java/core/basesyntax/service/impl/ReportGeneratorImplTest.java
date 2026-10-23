@@ -1,24 +1,37 @@
 package core.basesyntax.service.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import core.basesyntax.db.Storage;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class ReportGeneratorImplTest {
+    private static Storage storage;
+    private static ReportGeneratorImpl reportGenerator;
+
+    @BeforeAll
+    public static void setUp() {
+        storage = new Storage();
+        reportGenerator = new ReportGeneratorImpl(storage);
+    }
+
     @Test
     public void reportGeneratorTest() {
-        Storage storage = new Storage();
         storage.add("apple", 10);
-        ReportGenerator reportGenerator = new ReportGeneratorImpl(storage);
         String report = reportGenerator.getReport();
-        Assertions.assertEquals("fruit,quantity" + "\n" + "apple,10" + "\n", report);
+        assertEquals("fruit,quantity" + "\n" + "apple,10" + "\n", report);
     }
 
     @Test
     public void emptyStorageReportTest() {
-        Storage storage = new Storage();
-        ReportGenerator reportGenerator = new ReportGeneratorImpl(storage);
         String report = reportGenerator.getReport();
-        Assertions.assertEquals("fruit,quantity" + "\n", report);
+        assertEquals("fruit,quantity" + "\n", report);
+    }
+
+    @AfterEach
+    public void clearStorage() {
+        storage.getAll().clear();
     }
 }
